@@ -1,6 +1,8 @@
 #ifndef NODEC_PHYSICS__SERIALIZATION__COMPONENTS__RIGID_BODY_HPP_
 #define NODEC_PHYSICS__SERIALIZATION__COMPONENTS__RIGID_BODY_HPP_
 
+#include <nodec/serialization/flags.hpp>
+
 #include <nodec_physics/components/rigid_body.hpp>
 #include <nodec_scene_serialization/serializable_component.hpp>
 
@@ -14,19 +16,23 @@ public:
 
     SerializableRigidBody(const RigidBody &other)
         : BaseSerializableComponent(this),
-          mass(other.mass) {}
+          mass(other.mass),
+          constraints(other.constraints) {}
 
     operator RigidBody() const noexcept {
         RigidBody value;
         value.mass = mass;
+        value.constraints = constraints;
         return value;
     }
 
     float mass{0.0f};
+    nodec::Flags<RigidBodyConstraints> constraints;
 
     template<class Archive>
     void serialize(Archive &archive) {
         archive(cereal::make_nvp("mass", mass));
+        archive(cereal::make_nvp("constraints", constraints));
     }
 };
 } // namespace components

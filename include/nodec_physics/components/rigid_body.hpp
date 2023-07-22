@@ -24,7 +24,7 @@ struct RigidBody {
 
     float mass{0.0f};
 
-    nodec::Flags<RigidBodyConstraints> constrains;
+    nodec::Flags<RigidBodyConstraints> constraints;
 };
 
 }
