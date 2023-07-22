@@ -12,3 +12,17 @@ target_include_directories(
 target_link_libraries(${PROJECT_NAME}
     INTERFACE nodec
 )
+
+option(NODEC_PHYSICS_ENABLE_SERIALIZATION OFF)
+
+if(NODEC_PHYSICS_ENABLE_SERIALIZATION)
+    target_include_directories(
+        ${PROJECT_NAME}
+        INTERFACE serialization
+    )
+
+    target_link_libraries(${PROJECT_NAME}
+        INTERFACE
+        nodec_scene_serialization
+    )
+endif()
