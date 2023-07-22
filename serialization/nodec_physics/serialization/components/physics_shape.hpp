@@ -1,5 +1,5 @@
-#ifndef NODEC_SERIALIZATION__NODEC_PHYSICS__COMPONENTS__PHYSICS_SHAPE_HPP_
-#define NODEC_SERIALIZATION__NODEC_PHYSICS__COMPONENTS__PHYSICS_SHAPE_HPP_
+#ifndef NODEC_PHYSICS__SERIALIZATION__COMPONENTS__PHYSICS_SHAPE_HPP_
+#define NODEC_PHYSICS__SERIALIZATION__COMPONENTS__PHYSICS_SHAPE_HPP_
 
 #include <nodec_physics/components/physics_shape.hpp>
 #include <nodec_scene_serialization/serializable_component.hpp>
