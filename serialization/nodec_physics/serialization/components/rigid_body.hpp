@@ -16,21 +16,25 @@ public:
 
     SerializableRigidBody(const RigidBody &other)
         : BaseSerializableComponent(this),
+          body_type(other.body_type),
           mass(other.mass),
           constraints(other.constraints) {}
 
     operator RigidBody() const noexcept {
         RigidBody value;
+        value.body_type = body_type;
         value.mass = mass;
         value.constraints = constraints;
         return value;
     }
 
-    float mass{0.0f};
+    RigidBody::BodyType body_type{RigidBody::BodyType::Dynamic};
+    float mass{1.0f};
     nodec::Flags<RigidBodyConstraints> constraints;
 
     template<class Archive>
     void serialize(Archive &archive) {
+        archive(cereal::make_nvp("body_type", body_type));
         archive(cereal::make_nvp("mass", mass));
         archive(cereal::make_nvp("constraints", constraints));
     }

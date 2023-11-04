@@ -20,9 +20,14 @@ enum class RigidBodyConstraints {
 };
 
 struct RigidBody {
-    // motion_type: static, dynamic
+    enum class BodyType {
+        Dynamic,
+        Kinematic,
+    };
 
-    float mass{0.0f};
+    BodyType body_type{BodyType::Dynamic};
+
+    float mass{1.0f};
 
     nodec::Flags<RigidBodyConstraints> constraints;
 
