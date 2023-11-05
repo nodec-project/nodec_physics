@@ -16,13 +16,15 @@ public:
         : BaseSerializableComponent(this),
           shape_type(other.shape_type),
           size(other.size),
-          radius(other.radius) {}
+          radius(other.radius),
+          height(other.height) {}
 
     operator PhysicsShape() const noexcept {
         PhysicsShape value;
         value.shape_type = shape_type;
         value.size = size;
         value.radius = radius;
+        value.height = height;
         return value;
     }
 
@@ -31,12 +33,14 @@ public:
     nodec::Vector3f size{1.0f, 1.0f, 1.0f};
 
     float radius{0.5f};
+    float height{1.0f};
 
     template<class Archive>
     void serialize(Archive &archive) {
         archive(cereal::make_nvp("shape_type", shape_type));
         archive(cereal::make_nvp("size", size));
         archive(cereal::make_nvp("radius", radius));
+        archive(cereal::make_nvp("height", height));
     }
 };
 
