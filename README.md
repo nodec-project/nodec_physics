@@ -3,3 +3,4 @@
 ## Dependencies
 
 * nodec
+* nodec_scene
