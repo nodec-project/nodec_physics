@@ -7,14 +7,10 @@
 #include <nodec/vector3.hpp>
 #include <nodec_scene/scene_entity.hpp>
 
+#include "../ray_cast_hit.hpp"
 #include "../collision_info.hpp"
 
 namespace nodec_physics {
-
-struct RayCastHit {
-    nodec::Vector3f point;
-    nodec::Vector3f normal;
-};
 
 namespace systems {
 
