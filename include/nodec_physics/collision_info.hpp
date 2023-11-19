@@ -6,8 +6,8 @@
 namespace nodec_physics {
 
 struct CollisionInfo {
-    nodec_scene::SceneEntity entity0;
-    nodec_scene::SceneEntity entity1;
+    nodec_scene::SceneEntity self;
+    nodec_scene::SceneEntity other;
 
     // int num_of_contacts{0};
 };
