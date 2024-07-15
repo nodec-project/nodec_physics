@@ -35,6 +35,16 @@ struct RigidBody {
     nodec::Vector3f angular_velocity;
 };
 
+enum class RigidBodyDirtyFlag {
+    None = 0x00,
+    Constraints = 0x01,
+    _nodec_flags_enable
+};
+
+struct RigidBodyDirty {
+    nodec::Flags<RigidBodyDirtyFlag> flags;
+};
+
 } // namespace components
 } // namespace nodec_physics
 
