@@ -1,6 +1,8 @@
 #ifndef NODEC_PHYSICS__SYSTEMS__PHYSICS_SYSTEM_HPP_
 #define NODEC_PHYSICS__SYSTEMS__PHYSICS_SYSTEM_HPP_
 
+#include <cstdint>
+
 #include <nodec/macros.hpp>
 #include <nodec/optional.hpp>
 #include <nodec/signals/signal.hpp>
@@ -25,9 +27,15 @@ public:
      *
      * @param ray_start The starting point of the ray.
      * @param ray_end The ending point of the ray.
+     * @param collision_filter_group The collision group of the ray. Used for collision filtering.
+     * @param collision_filter_mask The collision mask of the ray. Only collides with objects whose group matches this mask.
      * @return nodec::optional<RayCastHit> The first object hit by the ray, if any.
      */
-    virtual nodec::optional<RayCastHit> ray_cast(const nodec::Vector3f &ray_start, const nodec::Vector3f &ray_end) = 0;
+    virtual nodec::optional<RayCastHit> ray_cast(
+        const nodec::Vector3f &ray_start,
+        const nodec::Vector3f &ray_end,
+        std::uint32_t collision_filter_group = 0xFFFFFFFF,
+        std::uint32_t collision_filter_mask = 0xFFFFFFFF) = 0;
 
     virtual void contact_test(nodec_scene::SceneEntity entity, std::function<void(CollisionInfo &)> callback) = 0;
 
